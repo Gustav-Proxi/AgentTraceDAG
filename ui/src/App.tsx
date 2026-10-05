@@ -31,7 +31,11 @@ function ScrubBar({
         max={max}
         step={(max - min) / 1000}
         value={value ?? max}
-        onChange={(e) => onChange(Number(e.target.value))}
+        onChange={(e) => {
+          // Float step rounding can land just below max; treat the right edge as "show all".
+          const t = Number(e.target.value);
+          onChange(t >= max - (max - min) / 1000 ? null : t);
+        }}
         className="flex-1 accent-[#e05c5c]"
       />
       {value !== null && (

@@ -9,6 +9,10 @@
   <img alt="SQLite" src="https://img.shields.io/badge/Storage-SQLite-7C3AED?style=flat-square&logo=sqlite&logoColor=white">
 </p>
 
+<p align="center">
+  <img src="docs/dashboard.gif" alt="AgentTraceDAG dashboard: selecting a failed run, scrubbing the timeline back step by step, and inspecting the tool call that errored" width="900">
+</p>
+
 When your agent fails on step 6 of 10, `stdout` JSON dumps are useless. AgentTraceDAG intercepts every step, stores the exact state into a local SQLite DAG, and gives you a dashboard to scrub *backward in time* — seeing the precise context window, tool payloads, and token usage at any millisecond.
 
 ---
@@ -82,6 +86,18 @@ result = wrapped_agent.run("Solve this problem")
 ---
 
 ## Dashboard
+
+![Dashboard showing a failed research-agent run with the erroring CitationCheck tool call open in the payload inspector](docs/dashboard.png)
+
+**Try it in 30 seconds — no API keys:**
+
+```bash
+pip install -e .
+python examples/seed_demo.py --db demo.db   # 3 sample runs, one fails at step 8
+python -m agenttracedag --db demo.db
+```
+
+**Usage:**
 
 ```bash
 # Start the dashboard (opens http://localhost:7474)

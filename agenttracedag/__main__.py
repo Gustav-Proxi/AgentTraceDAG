@@ -1,6 +1,7 @@
 """python -m agenttracedag — start the AgentTraceDAG dashboard server."""
 import argparse
 import sys
+from pathlib import Path
 
 
 def main() -> None:
