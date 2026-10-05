@@ -4,5 +4,6 @@ __pycache__/
 .pytest_cache/
 *.egg-info/
 dist/
-.agentreplay.db
-agentreplay/ui_dist/
+.agenttracedag.db*
+demo.db*
+.DS_Store
